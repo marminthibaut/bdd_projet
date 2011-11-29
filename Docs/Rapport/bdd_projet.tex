@@ -1,0 +1,73 @@
+\documentclass[a4paper,french,towsides,10pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{placeins}
+\usepackage{tabularx}
+\usepackage[french,ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[bookmarks=true]{hyperref}
+\hypersetup{pdfborder={0 0 0}}
+\pagestyle{fancy}
+\setlength{\parskip}{1.5ex plus .4ex minus .4ex}
+\renewcommand{\labelitemi}{\textbullet}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+
+
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+\fancyhf{}
+
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\leftmark}
+\fancyhead[RE]{Projet GMIN103 Base de données avancée}
+
+\fancypagestyle{corps}{ 
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{\rightmark}
+\fancyhead[RE]{\leftmark}
+}
+
+\renewcommand{\footrulewidth}{0pt} % pas de filet en bas
+\fancypagestyle{plain}{ % pages de tetes de chapitre
+\fancyhead{}
+% supprime l’entete
+\renewcommand{\headrulewidth}{0pt} % et le filet
+}
+\newcommand{\clearemptydoublepage}{%
+	\newpage{\pagestyle{empty}\cleardoublepage}}
+
+
+%Modification des marges
+%\\oddsidemargin}{-2,5cm}
+%\addtolength{\textwidth}{5cm}
+%\addtolength{\topmargin}{-2,5cm}
+%\addtolength{\textheight}{4cm}
+
+%definition des fonctions de la page de garde
+\input{includes/gardedef}
+
+%definition du titre et autres param
+\def\titre{\LARGE Projet GMIN103 Base de données avancée \\ Thésaurus}
+\def\sstitre{Rapport (Décembre 2011)}
+\def\auteurs{
+	  Baptiste \textsc{Le Bail} \\
+      Thibaut \textsc{Marmin} \\
+      Clément \textsc{Sipieter} \\
+      Namrata \textsc{Patel}}
+
+\begin{document}
+\renewcommand{\labelitemii}{\textasteriskcentered}
+\input{includes/garde}
+\clearemptydoublepage
+\tableofcontents
+\clearemptydoublepage
+\end{document}

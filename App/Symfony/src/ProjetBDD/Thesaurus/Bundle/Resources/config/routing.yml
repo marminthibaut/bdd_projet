@@ -1,0 +1,62 @@
+ProjetBDDThesaurusBundle_accueil:
+    pattern: /
+    defaults: { _controller: ProjetBDDThesaurusBundle:Default:index }
+
+concept:
+    pattern:  /concepts
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:index }
+ 
+concept_show:
+    pattern:  /concept/show/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:show }
+ 
+concept_edit:
+    pattern:  /concept/edit/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:edit }
+ 
+concept_delete:
+    pattern:  /concept/delete/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:delete }
+ 
+concept_update:
+    pattern:  /concept/update/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:update }
+ 
+concept_create:
+    pattern:  /concept/create
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:create }
+ 
+concept_new:
+    pattern:  /concept/add
+    defaults: { _controller: ProjetBDDThesaurusBundle:Concept:new }
+
+
+
+
+terme:
+    pattern:  /termes
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:index }
+ 
+terme_show:
+    pattern:  /terme/show/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:show }
+ 
+terme_edit:
+    pattern:  /terme/edit/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:edit }
+ 
+terme_delete:
+    pattern:  /terme/delete/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:delete }
+ 
+terme_update:
+    pattern:  /terme/update/{id}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:update }
+ 
+terme_create:
+    pattern:  /terme/create
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:create }
+ 
+terme_new:
+    pattern:  /terme/add
+    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:new }

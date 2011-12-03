@@ -1,0 +1,7 @@
+parameters:
+#    projet_bdd_thesaurus.example.class: ProjetBDD\Thesaurus\Bundle\Example
+
+services:
+#    projet_bdd_thesaurus.example:
+#        class: %projet_bdd_thesaurus.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

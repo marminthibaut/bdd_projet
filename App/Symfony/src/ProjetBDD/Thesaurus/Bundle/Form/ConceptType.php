@@ -12,7 +12,7 @@ class ConceptType extends AbstractType
         $builder
             ->add('terme_vedette')
             ->add('concept_general', 'entity', array('class'=>'ProjetBDD\Thesaurus\Bundle\Entity\Concept', 'property'=>'terme_vedette', 'required' => false))
-            ->add('synonymes', 'entity', array('class'=>'ProjetBDD\Thesaurus\Bundle\Entity\Terme', 'property'=>'libelle', 'required' => false, 'multiple' => true))
+            ->add('synonymes', 'entity', array('class'=>'ProjetBDD\Thesaurus\Bundle\Entity\Terme', 'required' => false, 'multiple' => true))
             ->add('associations', 'entity', array('class'=>'ProjetBDD\Thesaurus\Bundle\Entity\Concept', 'property'=>'terme_vedette', 'required' => false, 'multiple' => true))
         ;
     }

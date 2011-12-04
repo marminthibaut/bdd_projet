@@ -102,6 +102,18 @@ class ProjetBDDThesaurusBundleEntityConceptProxy extends \ProjetBDD\Thesaurus\Bu
         return parent::getAssociations();
     }
 
+    public function setAssociesAvecMoi($associes_avec_moi)
+    {
+        $this->__load();
+        return parent::setAssociesAvecMoi($associes_avec_moi);
+    }
+
+    public function getAssociesAvecMoi()
+    {
+        $this->__load();
+        return parent::getAssociesAvecMoi();
+    }
+
     public function __toString()
     {
         $this->__load();
@@ -111,7 +123,7 @@ class ProjetBDDThesaurusBundleEntityConceptProxy extends \ProjetBDD\Thesaurus\Bu
 
     public function __sleep()
     {
-        return array('__isInitialized__', 'id', 'terme_vedette', 'concept_general', 'concepts_specifiques', 'synonymes', 'associations');
+        return array('__isInitialized__', 'id', 'terme_vedette', 'concept_general', 'concepts_specifiques', 'synonymes', 'associes_avec_moi', 'associations');
     }
 
     public function __clone()

@@ -26,6 +26,7 @@ class Concept
     /**
      * @ORM\OneToOne(targetEntity="Terme")
      * @Assert\NotBlank()
+     * 
      */
     private $terme_vedette;
 
@@ -45,7 +46,16 @@ class Concept
     private $synonymes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Concept")
+     * @ORM\ManyToMany(targetEntity="Concept", mappedBy="associations")
+     */
+    private $associes_avec_moi;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Concept", inversedBy="associes_avec_moi")
+     * @ORM\JoinTable(name="concept_concept",
+     *      joinColumns={@ORM\JoinColumn(name="concept_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="concept_associe_id", referencedColumnName="id")}
+     *      )
      */
     private $associations;
 
@@ -158,6 +168,26 @@ class Concept
     public function getAssociations()
     {
         return $this->associations;
+    }
+
+    /**
+     * Set associes_avec_moi
+     *
+     * @param object $associes_avec_moi
+     */
+    public function setAssociesAvecMoi($associes_avec_moi)
+    {
+        $this->associes_avec_moi = $associes_avec_moi;
+    }
+
+    /**
+     * Get associes_avec_moi
+     *
+     * @return object 
+     */
+    public function getAssociesAvecMoi()
+    {
+        return $this->associes_avec_moi;
     }
 
     public function __toString() { return '['.$this->id.'] '.$this->terme_vedette; }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * ProjetBDD\Thesaurus\Bundle\Entity\Terme
  *
- * @ORM\Table(indexes={@ORM\index(name="libterme_idx",columns={"libelle"})})
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="ProjetBDD\Thesaurus\Bundle\Entity\TermeRepository")
  */
 class Terme
@@ -15,18 +15,10 @@ class Terme
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="string", length="255")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var string $libelle
-     *
-     * @ORM\Column(name="libelle", type="string", length=255)
-     */
-    private $libelle;
 
 
     /**
@@ -39,25 +31,10 @@ class Terme
         return $this->id;
     }
 
-    /**
-     * Set libelle
-     *
-     * @param string $libelle
-     */
-    public function setLibelle($libelle)
+    public function setId($id)
     {
-        $this->libelle = $libelle;
+        $this->id = $id;
     }
 
-    /**
-     * Get libelle
-     *
-     * @return string 
-     */
-    public function getLibelle()
-    {
-        return $this->libelle;
-    }
-
-    public function __toString() { return $this->libelle; }
+    public function __toString() { return $this->id; }
 }

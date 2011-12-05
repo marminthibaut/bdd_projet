@@ -61,13 +61,24 @@
 \def\auteurs{
 	  Baptiste \textsc{Le Bail} \\
       Thibaut \textsc{Marmin} \\
+      Namrata \textsc{Patel} \\
       Clément \textsc{Sipieter} \\
-      Namrata \textsc{Patel}}
+      Steeve \textsc{Tuvée}}
 
 \begin{document}
+\frontmatter
 \renewcommand{\labelitemii}{\textasteriskcentered}
 \input{includes/garde}
 \clearemptydoublepage
+\input{intro}
+\clearemptydoublepage
 \tableofcontents
 \clearemptydoublepage
+\mainmatter
+\chapter{Analyse}
+\input{analyse}
+\chapter{Conception}
+\input{conception}
+\chapter{Implémentation}
+\input{implementation}
 \end{document}

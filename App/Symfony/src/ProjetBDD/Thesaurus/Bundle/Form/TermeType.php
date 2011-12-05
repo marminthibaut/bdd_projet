@@ -10,7 +10,7 @@ class TermeType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('libelle')
+            ->add('id')
         ;
     }
 

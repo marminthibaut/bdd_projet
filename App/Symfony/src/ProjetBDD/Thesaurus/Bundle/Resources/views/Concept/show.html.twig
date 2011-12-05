@@ -3,8 +3,20 @@
 <table class="record_properties">
     <tbody>
         <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
+            <th>Concept : </th>
+            <td>{{ entity }}</td>
+        </tr>
+        <tr>
+            <th>Concept général : </th>
+            <td>{{ entity.getConceptGeneral() }}</td>
+        </tr>
+        <tr>
+            <th>Concepts spécifiques :</th>
+            <td><ul>
+                {% for t in entity.getConceptsSpecifiques() %}
+                    <li>{{ t }}</li>
+                {% endfor %}
+            </ul></td>
         </tr>
     </tbody>
 </table>

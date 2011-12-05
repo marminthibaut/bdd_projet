@@ -91,7 +91,7 @@ class LoadThesaurusData extends AbstractFixture
 
         foreach($termes as $libelle){
             $terme  = new Terme();
-            $terme->setLibelle($libelle);
+            $terme->setId($libelle);
             $manager->persist($terme);
             $this->setReference($libelle,$terme);
         }        

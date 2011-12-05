@@ -4,7 +4,6 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Libelle</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -12,7 +11,6 @@
     {% for entity in entities %}
         <tr>
             <td><a href="{{ path('terme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>{{ entity.libelle }}</td>
             <td>
                 <ul>
                     <li>

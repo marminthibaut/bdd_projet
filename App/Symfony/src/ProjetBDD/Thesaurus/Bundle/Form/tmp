@@ -1,1 +1,0 @@
-, 'entity', array('class'=>'ProjetBDD\Thesaurus\Bundle\Entity\Concept', 'property'=>'terme_vedette', 'required' => false, 'multiple' => true))

@@ -4,3 +4,15 @@ Un thésaurus est un type de langage documentaire qui constitue un vocabulaire n
 L'outil développé lors de ce projet sera composé de termes décrivant des concepts, reliés entre eux par des relations hiérarchiques, synonymiques et associatives. L'utilisateur aura la possibilité d'explorer la hiérarchie et de gérer (ajouter / modifier / supprimer) les termes et les concepts.
 
 Ce travail, réalisé par une équipe de cinq étudiants\footnote{Baptiste Le Bail, Thibaut Marmin, Namrata Patel, Clément Sipieter, Steeve Tuvée}, est présenté dans ce rapport selon trois phases distinctes : analyse, conception, implémentation.
+\clearemptydoublepage
+\chapter*{Méthode de travail}
+
+Le projet à été réalisé en une durée d'environ un mois. Nous nous sommes réunis en moyenne deux fois par semaine pour mettre en commun nos travaux et réflexions.
+
+Nous avons consacré la majeure partie du projet à la \textbf{phase d'analyse}. Celle-ci étant cruciale pour l'aboutissement du projet, tous les membres de l'équipe ont travaillé ensembles afin d'avoir plusieurs visions sur les différentes modélisations imaginées. Nous avons donc convergé vers une modélisation finale, que nous avons pris soin de justifier.
+
+La \textbf{phase de conception} a engendré de nombreuses questions concernant l'utilisation du modèle objet-relationnel. Nous avons du faire le choix d'un SGBD et des choix concernant le modèle objet-relationnel. Ceux-ci étant généraux au projet, nous avons mis ce travail de réflexion en commun. Lors de cette phase, Baptiste et Steeve ont mis en place les vues utilisateurs de l'interface web. Clément et Namrata ont travaillé sur la mise en place de deux schémas relationnels : un schéma uniquement relationnel et un schéma objet-relationnel.
+
+Les choix et réflextions de la phase de conception nous ont amené, lors de la \textbf{phase d'implémentation}, à développer l'application à l'aide d'un framework comportant un ORM (Object Relational Mapping). Cette implémentation à été réalisée par Thibaut, en incluant les templates HTML créés par Baptiste et Steeve sur les modèles mis en place à la phase précédente. Le projet ayant été réalisé à l'aide d'un ORM (donc sans rédaction de requêtes), nous avons tenu tout de même à travailler le modèle objet-relationnel. Clément et Namrata ont donc rédigé les scripts SQL de création et de consultation d'une base de donnée Oracle, utilisant des aspects objets.
+
+La rédaction du rapport à été réalisée par Clément, Namrata et Thibaut.

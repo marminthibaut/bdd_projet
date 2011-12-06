@@ -1,7 +1,7 @@
 /* Active PL/PGSQL */
 CREATE LANGUAGE plpgsql;
 
-/* Creation de la fonction associee au trigger */
+/* Creation de la fonction associee au trigger de gestion de la reflexivité des associations */
 CREATE OR REPLACE FUNCTION fc_gestion_relations() RETURNS trigger as $tgr_gestion_relations$
 DECLARE
 nb INTEGER;
@@ -29,8 +29,30 @@ RETURN NULL;
 END;
 $tgr_gestion_relations$ LANGUAGE plpgsql;
 
+/* Creation de la fonction associee au trigger de gestion de la reflexivité des associations */
+CREATE OR REPLACE FUNCTION fc_verif_root() RETURNS trigger as $tgr_verif_root$
+DECLARE
+nb INTEGER;
+BEGIN
+IF (OLD.terme_general IS NULL) THEN
+	SELECT count(*) INTO nb FROM concept WHERE concept_general IS NULL;
+	IF (TG_OP = 'DELETE' AND nb < 2) THEN
+		RAISE EXCEPTION 'Au moins une racine doit être présente.';
+	ELSEIF (TG_OP = 'UPDATE' AND NEW.terme_general IS NOT NULL AND nb < 2) THEN
+		RAISE EXCEPTION 'Au moins une racine doit être présente.';
+	END IF;
+END IF;
+RETURN NULL;
+END;
+$tgr_verif_root$ LANGUAGE plpgsql;
 
-/* Creation du declencheur tgr_term_doc_content */
+
+/* Creation du declencheur tgr_gestion_relations */
 CREATE TRIGGER tgr_gestion_relations AFTER DELETE OR UPDATE OR INSERT
 ON concept_concept FOR EACH ROW
 EXECUTE PROCEDURE fc_gestion_relations();
+
+/* Creation du declencheur tgr_verif_root */
+CREATE TRIGGER tgr_verif_root AFTER DELETE OR UPDATE
+ON concept FOR EACH ROW
+EXECUTE PROCEDURE fc_verif_root();

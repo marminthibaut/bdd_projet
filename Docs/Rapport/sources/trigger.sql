@@ -34,11 +34,11 @@ CREATE OR REPLACE FUNCTION fc_verif_root() RETURNS trigger as $tgr_verif_root$
 DECLARE
 nb INTEGER;
 BEGIN
-IF (OLD.terme_general IS NULL) THEN
-	SELECT count(*) INTO nb FROM concept WHERE concept_general IS NULL;
+IF (OLD.concept_general_id IS NULL) THEN
+	SELECT count(*) INTO nb FROM concept WHERE concept_general_id IS NULL;
 	IF (TG_OP = 'DELETE' AND nb < 2) THEN
 		RAISE EXCEPTION 'Au moins une racine doit être présente.';
-	ELSEIF (TG_OP = 'UPDATE' AND NEW.terme_general IS NOT NULL AND nb < 2) THEN
+	ELSEIF (TG_OP = 'UPDATE' AND NEW.concept_general_id IS NOT NULL AND nb < 2) THEN
 		RAISE EXCEPTION 'Au moins une racine doit être présente.';
 	END IF;
 END IF;

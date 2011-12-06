@@ -3,14 +3,14 @@
 <table class="records_list">
     <thead>
         <tr>
-            <th>Concept</th>
+            <th>Id</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
     {% for entity in entities %}
         <tr>
-            <td><a href="{{ path('concept_show', { 'id': entity.id }) }}">{{ entity }}</a></td>
+            <td><a href="{{ path('concept_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
             <td>
                 <ul>
                     <li>

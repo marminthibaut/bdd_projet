@@ -53,9 +53,9 @@ class Concept
     /**
      * @ORM\ManyToMany(targetEntity="Concept", inversedBy="associes_avec_moi")
      * @ORM\JoinTable(name="concept_concept",
-     *      joinColumns={@ORM\JoinColumn(name="concept_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="concept_associe_id", referencedColumnName="id")}
-     *      )
+     * joinColumns={@ORM\JoinColumn(name="concept1_id", referencedColumnName="id")},
+     * inverseJoinColumns={@ORM\JoinColumn(name="concept2_id", referencedColumnName="id")}
+     * )
      */
     private $associations;
 

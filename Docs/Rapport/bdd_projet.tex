@@ -7,6 +7,8 @@
 \usepackage{enumerate}
 \usepackage{graphicx}
 \usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
 \usepackage{placeins}
 \usepackage{tabularx}
 \usepackage[french,ruled,vlined,linesnumbered]{algorithm2e}
@@ -67,7 +69,33 @@
       Clément \textsc{Sipieter} \\
       Steeve \textsc{Tuvée}}
 
+
 \begin{document}
+
+% Def variable coloration code source
+
+\section{Annexes}
+\definecolor{keyword}{rgb}{0.55,0,0} 
+\definecolor{type}{rgb}{0,0.55,0} 
+\definecolor{comment}{rgb}{0.7,0.7,0.7} 
+
+\lstset{
+basicstyle=\scriptsize\sffamily,
+numbers=left,
+numberstyle=\scriptsize\color{comment},
+keywordstyle=\color{keyword}\bfseries,
+commentstyle=\color{comment},
+breaklines=true,
+fontadjust=true,
+columns=fullflexible,
+morekeywords=true
+}
+
+\lstset{emph={ varchar , integer , bigint , date , smallint , real , OLD , NEW , plpgsql , ROWTYPE},
+emphstyle=\color{type}}
+
+
+
 \frontmatter
 \renewcommand{\labelitemii}{\textasteriskcentered}
 \input{includes/garde}

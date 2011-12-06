@@ -36,10 +36,10 @@ nb INTEGER;
 BEGIN
 IF (OLD.concept_general_id IS NULL) THEN
 	SELECT count(*) INTO nb FROM concept WHERE concept_general_id IS NULL;
-	IF (TG_OP = 'DELETE' AND nb < 2) THEN
-		RAISE EXCEPTION 'Au moins une racine doit être présente.';
-	ELSEIF (TG_OP = 'UPDATE' AND NEW.concept_general_id IS NOT NULL AND nb < 2) THEN
-		RAISE EXCEPTION 'Au moins une racine doit être présente.';
+	IF (TG_OP = 'DELETE' AND nb < 1) THEN
+		RAISE EXCEPTION 'Au moins une racine doit être présente. nb = %', nb;
+	ELSEIF (TG_OP = 'UPDATE' AND nb < 1 AND NEW.concept_general_id IS NOT NULL ) THEN
+		RAISE EXCEPTION 'Au moins une racine doit être présente nb = %.', nb;
 	END IF;
 END IF;
 RETURN NULL;

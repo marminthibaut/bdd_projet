@@ -26,9 +26,20 @@ class ConceptController extends Controller
     {
         $em = $this->getDoctrine()->getEntityManager();
 
-        $entities = $em->getRepository('ProjetBDDThesaurusBundle:Concept')->findAll();
+        $roots = $em->getRepository('ProjetBDDThesaurusBundle:Concept')->findBy(array('concept_general' => NULL));
 
-        return array('entities' => $entities);
+        $i = 0;
+	$tab = array();
+	$this->haborescence($roots,$i,$tab);
+
+        return array('tab' => $tab);
+    }
+
+    private function haborescence($roots,$i,&$tab){
+        foreach($roots as $r){
+            array_push($tab,array('entity' => $r, 'rang' => $i));
+            $this->haborescence($r->getConceptsSpecifiques(),$i+1,$tab);
+        }
     }
 
     /**

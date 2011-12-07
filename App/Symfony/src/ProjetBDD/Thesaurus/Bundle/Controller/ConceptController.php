@@ -162,8 +162,12 @@ class ConceptController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
+	    if($this->boucle($entity->getConceptGeneral(),$entity)) $this->get('session')->setFlash('error', 'L\'affectation de ce parent crée une boucle dans la hiérarchie.');
+	    else{
+	    $this->get('session')->setFlash('notice', 'Modification enregistrées.');
             $em->persist($entity);
             $em->flush();
+	    }
 
             return $this->redirect($this->generateUrl('concept_edit', array('id' => $id)));
         }
@@ -173,6 +177,12 @@ class ConceptController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
+    }
+
+    private function boucle($e1,&$e2){
+        if($e1 === NULL) return false;
+	else if($e1 === $e2) return true;
+	else return $this->boucle($e1->getConceptGeneral(),$e2);
     }
 
     /**

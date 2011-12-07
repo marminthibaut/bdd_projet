@@ -1,13 +1,55 @@
+{% extends 'ProjetBDDThesaurusBundle:Concept:layout.html.twig' %}
+
+{% block title %}Affichage du concept {{ entity }}{% endblock %}
+
+{% block content %}
 <h1>Concept</h1>
 
-<table class="record_properties">
-    <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ entity.id }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="top-center">
+	<h2>Concept</h2>
+	{{ entity }}
+</div>
+
+<div class="top-block">
+	<h2>Concept général</h2>
+	{% if entity.getConceptGeneral %}
+	<a href="{{ path('concept_show', { 'id': entity.getConceptGeneral.id }) }}">{{ entity.getConceptGeneral }}</a>
+	{% endif %}
+</div>
+
+<div class="top-right">
+	<h2>Termes Synonymes</h2>
+	<ul>
+	{% for synonyme in entity.getSynonymes %}
+		<li>
+		{{ synonyme }}
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+
+<div class="top-left">
+	<h2>Concepts associés</h2>
+	<ul>
+	{% for association in entity.getAssociations %}
+		<li>
+		<a href="{{ path('concept_show', { 'id': association.id }) }}">{{ association }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+
+<div class="top-bottom">
+	<h2>Concepts spécifiques</h2>
+	<ul>
+	{% for specifique in entity.getConceptsSpecifiques %}
+		<li>
+		<a href="{{ path('concept_show', { 'id': specifique.id }) }}">{{ specifique }}</a>
+		</li>
+	{% endfor %}
+	</ul>
+</div>
+
 
 <ul class="record_actions">
     <li>
@@ -27,3 +69,5 @@
         </form>
     </li>
 </ul>
+
+{% endblock %}

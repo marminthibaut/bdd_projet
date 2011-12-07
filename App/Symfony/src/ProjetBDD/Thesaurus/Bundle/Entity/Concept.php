@@ -190,5 +190,5 @@ class Concept
         return $this->associes_avec_moi;
     }
 
-    public function __toString() { return '['.$this->id.'] '.$this->terme_vedette; }
+    public function __toString() { return $this->terme_vedette.' ['.$this->id.']'; }
 }

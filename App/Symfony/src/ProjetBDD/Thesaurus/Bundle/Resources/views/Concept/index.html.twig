@@ -1,6 +1,10 @@
-{% extends 'ProjetBDDThesaurusBundle:Concept:layout.html.twig' %}
+{% extends 'ProjetBDDThesaurusBundle:Default:layout.html.twig' %}
 
 {% block title %}Affichage des concepts{% endblock %}
+
+{% block stylesheet %}
+{{ parent() }}
+{% endblock %}
 
 
 {% block content %}

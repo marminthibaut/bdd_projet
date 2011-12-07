@@ -1,0 +1,22 @@
+{% extends 'ProjetBDDThesaurusBundle:Default:layout.html.twig' %}
+
+{% block title %}Resultat de la recherche{% endblock %}
+
+{% block stylesheet %}
+{{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+<h1>Résultats de la recherche "{{ request }}"</h1>
+{% if results %}
+    <ul>
+    {% for entry in results %}
+        <li><a href="{{ path('concept_show', { 'id': entry.id }) }}">{{ entry }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>Aucun résultat</p>
+{% endif %}
+
+{% endblock %}

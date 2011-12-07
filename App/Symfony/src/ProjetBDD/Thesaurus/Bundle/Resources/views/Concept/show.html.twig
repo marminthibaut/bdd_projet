@@ -1,4 +1,8 @@
-{% extends 'ProjetBDDThesaurusBundle:Concept:layout.html.twig' %}
+{% extends 'ProjetBDDThesaurusBundle:Default:layout.html.twig' %}
+
+{% block stylesheet %}
+parent()
+{% endblock %}
 
 {% block title %}Affichage du concept {{ entity }}{% endblock %}
 

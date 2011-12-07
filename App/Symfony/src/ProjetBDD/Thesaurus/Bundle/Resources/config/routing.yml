@@ -2,6 +2,10 @@ ProjetBDDThesaurusBundle_accueil:
     pattern: /
     defaults: { _controller: ProjetBDDThesaurusBundle:Default:index }
 
+ProjetBDDThesaurusBundle_search:
+    pattern:  /search/{request}
+    defaults: { _controller: ProjetBDDThesaurusBundle:Default:search }
+
 concept:
     pattern:  /concepts
     defaults: { _controller: ProjetBDDThesaurusBundle:Concept:index }

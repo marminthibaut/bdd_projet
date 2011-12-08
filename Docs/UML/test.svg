@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="31cm" height="21cm" viewBox="-6 -307 616 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="36cm" height="22cm" viewBox="-9 -325 703 438" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #eeecec" x="-4.75" y="-286" width="613" height="397.651"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-4.75" y="-286" width="613" height="397.651"/>
-    <rect style="fill: #eeecec" x="-4.75" y="-306" width="73.3" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-4.75" y="-306" width="73.3" height="20"/>
-    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="-2.75" y="-291">Thesaurus</text>
+    <rect style="fill: #ffffff" x="-7.75" y="-304" width="700.75" height="415.651"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-7.75" y="-304" width="700.75" height="415.651"/>
+    <rect style="fill: #ffffff" x="-7.75" y="-324" width="73.3" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-7.75" y="-324" width="73.3" height="20"/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="-5.75" y="-309">Thesaurus</text>
   </g>
   <g>
     <rect style="fill: #ffffff" x="267" y="-211" width="225.6" height="28"/>
@@ -39,38 +39,41 @@
     <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="383.8" y="81">*</text>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="6.818" y="-113.394" width="179.4" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="6.818" y="-113.394" width="179.4" height="28"/>
-    <text style="fill: #000000;text-anchor:middle;font-size:16;font-family:sanserif;font-style:normal;font-weight:700" x="96.518" y="-94.394">Terme</text>
-    <rect style="fill: #ffffff" x="6.818" y="-85.394" width="179.4" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="6.818" y="-85.394" width="179.4" height="20"/>
-    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="9.818" y="-71.394">+lib_terme: String</text>
-    <rect style="fill: #ffffff" x="6.818" y="-65.394" width="179.4" height="36"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="6.818" y="-65.394" width="179.4" height="36"/>
-    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="9.818" y="-51.394">+getLibTerme(): String</text>
-    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="9.818" y="-35.394">+setLibTerme(s:String)</text>
+    <rect style="fill: #ffffff" x="6.818" y="-133.394" width="179.4" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="6.818" y="-133.394" width="179.4" height="28"/>
+    <text style="fill: #000000;text-anchor:middle;font-size:16;font-family:sanserif;font-style:normal;font-weight:700" x="96.518" y="-114.394">Terme</text>
+    <rect style="fill: #ffffff" x="6.818" y="-105.394" width="179.4" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="6.818" y="-105.394" width="179.4" height="20"/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="9.818" y="-91.394">+lib_terme: String</text>
+    <rect style="fill: #ffffff" x="6.818" y="-85.394" width="179.4" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="6.818" y="-85.394" width="179.4" height="36"/>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="9.818" y="-71.394">+getLibTerme(): String</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.8;font-family:monospace;font-style:normal;font-weight:normal" x="9.818" y="-55.394">+setLibTerme(s:String)</text>
   </g>
   <g>
     <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="379.8,-211 379.8,-267 585,-267 585,-133 492.6,-133 "/>
-    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="482.4" y="-270"></text>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="482.4" y="-270">specialisation</text>
     <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="383.8" y="-231"> general</text>
     <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="383.8" y="-215">0..1</text>
     <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="496.6" y="-136"> specifique</text>
     <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="496.6" y="-120">*</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="267,-197 96.518,-197 96.518,-113.394 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="267,-197 96.518,-197 96.518,-133.394 "/>
     <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="181.759" y="-200"></text>
     <text style="fill: #000000;text-anchor:end;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="263" y="-200">*</text>
-    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="100.518" y="-133.394"> synonyme</text>
-    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="100.518" y="-117.394">*</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="100.518" y="-153.394"> synonyme</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="100.518" y="-137.394">*</text>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="267,43 96.518,43 96.518,-29.394 "/>
-    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="181.759" y="40">terme vedette</text>
-    <polygon style="fill: #000000" points="127.709,40 127.709,32 119.709,36 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="267,43 96.518,43 96.518,-24.2224 "/>
+    <polygon style="fill: #000000" points="96.518,-49.394 101.318,-35.394 96.518,-21.394 91.718,-35.394 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="96.518,-49.394 101.318,-35.394 96.518,-21.394 91.718,-35.394 "/>
+    <text style="fill: #000000;text-anchor:middle;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="181.759" y="40">vedette</text>
+    <polygon style="fill: #000000" points="150.809,40 150.809,32 142.809,36 "/>
     <text style="fill: #000000;text-anchor:end;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="263" y="40">*</text>
-    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="100.518" y="-17.394"> terme_vedette</text>
-    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="100.518" y="-1.394">1</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="107.518" y="-37.394"> terme_vedette</text>
+    <text style="fill: #000000;text-anchor:start;font-size:12.7998;font-family:monospace;font-style:normal;font-weight:normal" x="107.518" y="-21.394">1</text>
   </g>
 </svg>
+

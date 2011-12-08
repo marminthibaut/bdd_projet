@@ -1,25 +1,59 @@
 \textit{La phase d'analyse est un élément indispensable à la bonne réalisation du projet. Dans un premier temps, les fonctionnalités de l'application y sont décrites et caractérisées, notamment à l'aide d'un diagramme UML de cas d'utilisations. Une seconde partie présente les étapes successives qui nous ont permis d'arriver à la modélisation finale, sous la forme de diagrammes UML de classes et de \og{}discussions\fg{}.}
 
-Discours sur tous les schéma UML (usecases, class).
-
-Discussion des choix des diag de classe.
-
-Fini par le choix final justifié !
-
 \section{Fonctionnalités}
 
-L'application devra modéliser un thésaurus stocké dans une base de données, et devra permettre sa consultation au travers d'une interface web. L'utilisateur pourra donc consulter ou administrer les données. La consultation du thésaurus se fera donc par navigation dans un vue hiérarchique ou par nœud. Un outil de recherche facilitera l'accès aux données. Le module d'administration permettra quand à lui d'ajouter, de modifier et de supprimer les termes et les concepts, ainsi que les relations.
+L'application devra modéliser un thésaurus stocké dans une base de données, et devra permettre sa consultation au travers d'une interface web. L'utilisateur pourra donc consulter ou administrer les données. La consultation du thésaurus se fera par navigation dans une vue hiérarchique ou par nœud. Un outil de recherche facilitera l'accès aux données. Le module d'administration permettra quand à lui d'ajouter, de modifier et de supprimer les termes et les concepts, ainsi que les relations.
 
 \begin{figure}[H]
+\begin{center}
 \includegraphics[width=\textwidth]{files/usecase}
+\end{center}
 \caption{Diagramme de cas d'utilisations}
 \end{figure}
 
-\section{Modélisation}
-bla bla bla bla bla bla bla bla bla bla 
-\subsection{Première modélisation}
-bla bla bla bla bla bla 
+\section{Modélisation} 
+
+Un thésaurus est composé de deux types d'entités : les Termes et les Concepts.
+\begin{description}
+\item[Concepts] : ils sont décrits par un descripteur (terme vedette), et sont organisés hiérarchiquement par relations de concepts généraux (parents) et spécifiques (fils). Les concepts peuvent aussi être mis en relation par simple association.
+\item[Termes] : ils sont définis par un libellé et sont en relation de synonymie entre eux.
+\end{description}
+
+\subsection{Une première piste...}
+Pour notre première modélisation, nous avons fait le choix de respecter la définition stricte du thésaurus rappelée ci-dessus.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{files/class_v1}
+\end{center}
+\caption{Première version du diagramme de classes.}
+\end{figure}
+
+Bien que la définition soit rigoureusement respectée, cette modélisation est limitée : il est impossible de lever le problème de polysémie sur les termes. En effet prenons le terme \og avocat \fg. Celui-ci peut désigner un fruit ou un métier. La relation de synonymie est donc ambigüe bien que cette modélisation permet la création de deux concepts ayant comme le même terme vedette.
+
 \subsection{Évolution}
-bla bla bla bla bla bla 
+Pour résoudre ce problème d'ambiguïté des synonymes, il est nécessaire de distinguer ce type de relation en ajoutant une dépendance à un concept.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{files/class_v2}
+\end{center}
+\caption{Évolution du diagramme de classes.}
+\end{figure}
+
+Ce modèle est légèrement éloigné de la définition d'un thésaurus car les termes ne sont plus en relation de synonymie entre eux, mais avec des concepts. Nous avons donc choisi de spécialiser la classe Terme en deux classes filles \texttt{TermeVedette} et \texttt{TermeSynonyme}. Un concept est maintenant décrit à la fois par plusieurs termes : un terme vedette de type \texttt{TermVedette} et des synonymes de type \texttt{TermeSynonyme}.
+
 \subsection{Décision finale}
-bla bla bla bla bla bla bla bla bla bla 
+
+Pour cette dernière étape de réflexion, nous avons choisi de simplifier la modélisation.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{files/class_v3}
+\end{center}
+\caption{Version finale du diagramme de classes.}
+\end{figure}
+
+La suppression de l'héritage de terme nous rapproche du modèle initial, tout en conservant la résolution du problème lié à la polysémie. En effet, la distinction entre les termes vedette et les termes synonymes peut être ignorée.
+
+Reprenons le problème de l'\og avocat \fg : le terme sera stocké une fois en base, mais sera terme vedette de deux concepts : celui d'\og avocat \fg le fruit, et celui d'\og avocat \fg le métier. Le premier concept (fruit) pourra ne contenir aucun synonyme, tandis que le deuxième concept pourra avoir comme synonyme \og défenseur \fg{}.

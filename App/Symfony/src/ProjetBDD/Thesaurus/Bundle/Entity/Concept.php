@@ -24,7 +24,7 @@ class Concept
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Terme")
+     * @ORM\ManyToOne(targetEntity="Terme", inversedBy="id")
      * @Assert\NotBlank()
      * 
      */

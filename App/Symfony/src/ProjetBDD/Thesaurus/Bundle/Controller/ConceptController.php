@@ -38,7 +38,7 @@ class ConceptController extends Controller
     private function haborescence($roots,$i,&$tab){
         foreach($roots as $r){
             array_push($tab,array('entity' => $r, 'rang' => $i));
-            $this->haborescence($r->getConceptsSpecifiques(),$i+1,$tab);
+            $this->haborescence($r->getConceptsSpecifiques(),$i+3,$tab);
         }
     }
 

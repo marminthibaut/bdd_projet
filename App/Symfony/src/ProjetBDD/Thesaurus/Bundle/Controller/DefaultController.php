@@ -26,8 +26,11 @@ class DefaultController extends Controller
      * @Route("/search", name="ProjetBDDThesaurusBundle_search")
      * @Template()
      */
-    public function searchAction($request)
+    public function searchAction()
     {
+
+	$request = $this->getRequest()->get('request');
+	if(sizeof($request)>0){
 
 	$em = $this->getDoctrine()->getEntityManager();
 
@@ -48,5 +51,7 @@ class DefaultController extends Controller
         return $this->container->get('templating')->renderResponse('ProjetBDDThesaurusBundle:Default:search.html.twig',
 	    array('results' => $results,'request' => $request)
 	  );
+	}
+        return $this->container->get('templating')->renderResponse('ProjetBDDThesaurusBundle:Default:index.html.twig', array('message' => 'bonsoir'));
     }
 }

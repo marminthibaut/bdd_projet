@@ -3,7 +3,7 @@ ProjetBDDThesaurusBundle_accueil:
     defaults: { _controller: ProjetBDDThesaurusBundle:Default:index }
 
 ProjetBDDThesaurusBundle_search:
-    pattern:  /search/{request}
+    pattern:  /search
     defaults: { _controller: ProjetBDDThesaurusBundle:Default:search }
 
 concept:

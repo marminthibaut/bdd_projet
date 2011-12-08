@@ -1,1 +1,20 @@
-<p> {{ message }}</p>
+{% extends 'ProjetBDDThesaurusBundle:Default:layout.html.twig' %}
+
+{% block title %}Projet BDD : réalisation d'un Thésaurus{% endblock %}
+
+{% block stylesheet %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<h1>Projet BDD : réalisation d'un Thésaurus</h1>
+<p>L'application est développée dans le cadre de l'UE GMIN103 du Master Informatique de l'Université Montpellier 2.</p>
+<p>Vous avez la possibilité de :
+<ul>
+	<li>vous rendre sur la page permettant de <a href="{{ path('concept') }}">Visualiser l'ensemble les Concepts sous forme hiérarchique</a>,</li>
+	<li>Accéder à la vue d'un concept, détaillant ainsi ses voisins (concept général et concepts spécifiques), synonymes et relations,</li>
+	<li>Ajouter, modifier, et supprimer des Concepts,</li>
+	<li>Ajouter, modifier, et supprimer des Termes.</li>
+</ul>
+</p>
+{% endblock %}

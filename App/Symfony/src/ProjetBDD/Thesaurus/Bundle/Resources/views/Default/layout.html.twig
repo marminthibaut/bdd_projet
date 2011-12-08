@@ -4,15 +4,25 @@
         <meta charset='utf-8'>
         <title>{% block title %}Thésaurus{% endblock %}</title>
 	<link href="{{ asset('bundles/projetbddthesaurus/css/main.css') }}" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	{% include 'ProjetBDDThesaurusBundle:Default:main.css.twig' %}
+	</style>
     </head>
     <body>
     <div id="mainframe">
         <div id="header">
+		<h1>Thésaurus</h1>
+		<a href="{{ path('ProjetBDDThesaurusBundle_accueil') }}">
+		<img id="logo" src="{{ asset('bundles/projetbddthesaurus/images/logo.svg') }}" alt="">
+		</a>
+		{% include 'ProjetBDDThesaurusBundle:Default:searchform.html.twig' %}
         </div>
         <div id="content">
         {% block content %}{% endblock %}
         </div>
         <div id="footer">
+	Application développée dans le cadre de l'UE Base de données avancées (GMIN103) Master Informatique.
+	<a href="https://github.com/marminthibaut/bdd_projet">https://github.com/marminthibaut/bdd_projet</a>
         </div>
     </div>
     </body>

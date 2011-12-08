@@ -9,9 +9,9 @@
 
 {% block content %}
 <h1>Concept list</h1>
-    <ul>
+    <ul class="hierarchique">
     {% for entry in tab %}
-        <li style="margin-left:{{ entry.rang }}00px"><a href="{{ path('concept_show', { 'id': entry.entity.id }) }}">{{ entry.entity }}</a></li>
+        <li style="margin-left:{{ entry.rang }}0px"><a href="{{ path('concept_show', { 'id': entry.entity.id }) }}">{{ entry.entity }}</a></li>
     {% endfor %}
     </ul>
 

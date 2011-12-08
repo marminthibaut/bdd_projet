@@ -1,7 +1,7 @@
 /* Active PL/PGSQL */
 CREATE LANGUAGE plpgsql;
 
-/* Creation de la fonction associee au trigger de gestion de la reflexivité des associations */
+/* Creation de la fonction associee au trigger de gestion de la reflexivite des associations */
 CREATE OR REPLACE FUNCTION fc_gestion_relations() RETURNS trigger as $tgr_gestion_relations$
 DECLARE
 nb INTEGER;
@@ -29,7 +29,7 @@ RETURN NULL;
 END;
 $tgr_gestion_relations$ LANGUAGE plpgsql;
 
-/* Creation de la fonction associee au trigger de gestion de la reflexivité des associations */
+/* Creation de la fonction associee au trigger de verification des racines */
 CREATE OR REPLACE FUNCTION fc_verif_root() RETURNS trigger as $tgr_verif_root$
 DECLARE
 nb INTEGER;
@@ -37,9 +37,9 @@ BEGIN
 IF (OLD.concept_general_id IS NULL) THEN
 	SELECT count(*) INTO nb FROM concept WHERE concept_general_id IS NULL;
 	IF (TG_OP = 'DELETE' AND nb < 1) THEN
-		RAISE EXCEPTION 'Au moins une racine doit être présente. nb = %', nb;
+		RAISE EXCEPTION 'Au moins une racine doit etre presente.';
 	ELSEIF (TG_OP = 'UPDATE' AND nb < 1 AND NEW.concept_general_id IS NOT NULL ) THEN
-		RAISE EXCEPTION 'Au moins une racine doit être présente nb = %.', nb;
+		RAISE EXCEPTION 'Au moins une racine doit etre presente.';
 	END IF;
 END IF;
 RETURN NULL;

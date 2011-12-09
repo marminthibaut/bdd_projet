@@ -9,19 +9,19 @@
 
 {% block content %}
 <h1>Concept list</h1>
+<a class="new" href="{{ path('concept_new') }}"><img src="{{ asset('bundles/projetbddthesaurus/images/plus.svg') }}" alt="">Ajouter un concept</a>
     <ul class="hierarchique">
     {% for entry in tab %}
-        <li style="margin-left:{{ entry.rang }}0px"><a href="{{ path('concept_show', { 'id': entry.entity.id }) }}">{{ entry.entity }}</a></li>
+        <li style="margin-left:{{ entry.rang }}0px">
+		{% if entry.rang == 0 %}
+		<span class="tg" title="Terme Général">TG</span>
+		{% else %}
+		<span class="ts" title="Terme Spécifique">TS</span>
+		{% endif %}
+		<a href="{{ path('concept_show', { 'id': entry.entity.id }) }}">{{ entry.entity }}</a>
+	</li>
     {% endfor %}
     </ul>
-
-<ul>
-    <li>
-        <a href="{{ path('concept_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
 
 
 {% endblock %}

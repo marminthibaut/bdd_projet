@@ -7,71 +7,108 @@ parent()
 {% block title %}Affichage du concept {{ entity }}{% endblock %}
 
 {% block content %}
-<h1>Concept</h1>
-
-<div class="top-center">
-	<h2>Concept</h2>
-	{{ entity }}
-</div>
-
-<div class="top-block">
-	<h2>Concept général</h2>
-	{% if entity.getConceptGeneral %}
-	<a href="{{ path('concept_show', { 'id': entity.getConceptGeneral.id }) }}">{{ entity.getConceptGeneral }}</a>
-	{% endif %}
-</div>
-
-<div class="top-right">
-	<h2>Termes Synonymes</h2>
-	<ul>
-	{% for synonyme in entity.getSynonymes %}
-		<li>
-		{{ synonyme }}
-		</li>
-	{% endfor %}
-	</ul>
-</div>
-
-<div class="top-left">
-	<h2>Concepts associés</h2>
-	<ul>
-	{% for association in entity.getAssociations %}
-		<li>
-		<a href="{{ path('concept_show', { 'id': association.id }) }}">{{ association }}</a>
-		</li>
-	{% endfor %}
-	</ul>
-</div>
-
-<div class="top-bottom">
-	<h2>Concepts spécifiques</h2>
-	<ul>
-	{% for specifique in entity.getConceptsSpecifiques %}
-		<li>
-		<a href="{{ path('concept_show', { 'id': specifique.id }) }}">{{ specifique }}</a>
-		</li>
-	{% endfor %}
-	</ul>
-</div>
-
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('concept') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('concept_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('concept_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+<a href="{{ path('concept') }}" title="Retourner à la vue hiérarchique" class="retour-hiera">
+	<img src="{{ asset('bundles/projetbddthesaurus/images/retour-hiera.svg') }}" alt"Retour">
+</a>
+<table class="concept">
+	<tr>
+		<td>
+		</td><td></td>
+		<td id="cell-top"><div>
+				<h2>Concept général</h2>
+				<div class="cell-content">
+				{% if entity.getConceptGeneral %}
+				<p><a href="{{ path('concept_show', { 'id': entity.getConceptGeneral.id }) }}">{{ entity.getConceptGeneral }}</a>
+			{% else %}
+			<p class="empty">Aucun parent
+			{% endif %}
+			</p>
+			</div>
+		</div></td>
+		<td></td><td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><img class="interbox" src="{{ asset('bundles/projetbddthesaurus/images/bottom.svg') }}" alt=""></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td id="cell-left"><div>
+			<h2>Concepts associés</h2>
+			<div class="cell-content">
+				{% if entity.getAssociations.count>0 %}
+				<ul>
+				{% for association in entity.getAssociations %}
+					<li>
+					<a href="{{ path('concept_show', { 'id': association.id }) }}">{{ association }}</a>
+					</li>
+				{% endfor %}
+				</ul>
+				{% else %}
+					<p class="empty">Aucun concept associé</p>
+				{% endif %}
+			</div>
+		</div></td>
+		<td><img class="interbox" src="{{ asset('bundles/projetbddthesaurus/images/dual.svg') }}" alt=""></td>
+		<td id="cell-center">
+		<a title="Modifier" class="button edit-button" href="{{ path('concept_edit', { 'id': entity.id }) }}"></a>
+		<form class="delete-form" action="{{ path('concept_delete', { 'id': entity.id }) }}" method="post">
+		    {{ form_widget(delete_form) }}
+		    <button title="Supprimer" class="button" type="submit"></button>
+		</form>
+		<div>
+				<h2>Concept</h2>
+			<div class="cell-content">
+				<p>{{ entity }}</p>
+			</div>
+		</div></td>
+		<td><img class="interbox" src="{{ asset('bundles/projetbddthesaurus/images/synonyme.svg') }}" alt=""></td>
+		<td id="cell-right"><div>
+			<h2>Termes Synonymes</h2>
+			<div class="cell-content">
+				{% if entity.getSynonymes.count >0 %}
+				<ul>
+				{% for synonyme in entity.getSynonymes %}
+					<li>
+					{{ synonyme }}
+					</li>
+				{% endfor %}
+				</ul>
+				{% else %}
+				<p class="empty">Aucune synonyme</p>
+				{% endif %}
+			</div>
+		</div></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td><img class="interbox" src="{{ asset('bundles/projetbddthesaurus/images/bottom.svg') }}" alt=""></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td><td></td>
+		<td id="cell-bottom"><div>
+			<h2>Concepts spécifiques</h2>
+			<div class="cell-content">
+				{% if entity.getConceptsSpecifiques.count>0 %}
+				<ul>
+				{% for specifique in entity.getConceptsSpecifiques %}
+					<li>
+					<a href="{{ path('concept_show', { 'id': specifique.id }) }}">{{ specifique }}</a>
+					</li>
+				{% endfor %}
+				</ul>
+				{% else %}
+				<p class="empty">Aucun fils</p>
+				{% endif %}
+			</div>
+		</div></td>
+		<td></td><td></td>
+	</tr>
+</table>
 
 {% endblock %}

@@ -35,7 +35,7 @@ NESTED TABLE concepts_associees STORE AS nested_concepts;
 CREATE TABLE concepts OF concept_t;
 
 ALTER TABLE termes ADD CONSTRAINT pk_termes
-PRIMARY KEY (ref_terme)
+PRIMARY KEY (lib_terme)
 
 ALTER TABLE concepts ADD CONSTRAINT pk_concepts
 PRIMARY KEY (ref_terme_vedette)

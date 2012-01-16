@@ -1,0 +1,5 @@
+AuthUserFile /homez.420/thibautml/www/photostaln2011/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Accès sécurisé aux photos TALN. Le nom d'utilisateur et le mot de passe sont identiques, et correspondent à la clé du wifi disponible sur place lors de TALN."
+AuthType Basic
+Require valid-user

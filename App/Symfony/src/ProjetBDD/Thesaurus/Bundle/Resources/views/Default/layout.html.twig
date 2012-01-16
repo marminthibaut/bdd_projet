@@ -4,11 +4,23 @@
         <meta charset='utf-8'>
         <title>{% block title %}Thésaurus{% endblock %}</title>
 	<link href="{{ asset('bundles/projetbddthesaurus/css/main.css') }}" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="{{ asset('bundles/projetbddthesaurus/js/jquery.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/projetbddthesaurus/js/script.js') }}"></script>
 	<style type="text/css">
 	{% include 'ProjetBDDThesaurusBundle:Default:main.css.twig' %}
 	</style>
     </head>
     <body>
+{% if app.session.hasFlash('notice') %}
+    <div class="flash-notice">
+        {{ app.session.flash('notice') }}
+    </div>
+{% endif %}
+{% if app.session.hasFlash('error') %}
+    <div class="flash-notice">
+        {{ app.session.flash('error') }}
+    </div>
+{% endif %}
     <div id="mainframe">
         <div id="header">
 		<h1>Thésaurus Rex</h1>
@@ -16,6 +28,8 @@
 		<img id="logo" src="{{ asset('bundles/projetbddthesaurus/images/logo.svg') }}" alt="">
 		</a>
 		{% include 'ProjetBDDThesaurusBundle:Default:searchform.html.twig' %}
+		<a class="link" href="{{ path('concept') }}">Accéder aux concepts</a>
+		<a class="link" href="{{ path('terme') }}">Accéder aux termes</a>
         </div>
         <div id="content">
         {% block content %}{% endblock %}

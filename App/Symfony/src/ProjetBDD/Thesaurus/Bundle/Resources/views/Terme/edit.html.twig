@@ -1,22 +1,25 @@
-<h1>Terme edit</h1>
+{% extends 'ProjetBDDThesaurusBundle:Default:layout.html.twig' %}
 
-<form action="{{ path('terme_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+{% block title %}Edition du terme "{{ entity }}"{% endblock %}
+
+{% block stylesheet %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<h1>Edition du terme "{{ entity }}"</h1>
+
+<form id="mainform" action="{{ path('terme_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}
     <p>
-        <button type="submit">Edit</button>
+	<a href="{{ path('terme', { 'id': entity.id }) }}" title="Annuler" class="annuler">
+		<img src="{{ asset('bundles/projetbddthesaurus/images/annuler.svg') }}" alt="Annuler">
+	</a>
+        <button id="submit" type="submit">Edit</button>
     </p>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('terme') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('terme_delete', { 'id': entity.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+<form action="{{ path('terme_delete', { 'id': entity.id }) }}" method="post">
+     {{ form_widget(delete_form) }}
+    <button id="delete" type="submit">Delete</button>
+</form>
+{% endblock %}

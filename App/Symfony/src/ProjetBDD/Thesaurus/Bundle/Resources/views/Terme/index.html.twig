@@ -1,35 +1,22 @@
-<h1>Terme list</h1>
+{% extends 'ProjetBDDThesaurusBundle:Default:layout.html.twig' %}
 
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for entity in entities %}
-        <tr>
-            <td><a href="{{ path('terme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('terme_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('terme_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{% block title %}Liste des termes{% endblock %}
 
+{% block stylesheet %}
+{{ parent() }}
+{% endblock %}
+
+{% block content %}
+<h1>Liste des termes</h1>
+<a class="new" href="{{ path('terme_new') }}"><img src="{{ asset('bundles/projetbddthesaurus/images/plus.svg') }}" alt="">Ajouter un terme</a>
 <ul>
-    <li>
-        <a href="{{ path('terme_new') }}">
-            Create a new entry
-        </a>
-    </li>
+    {% for entity in entities %}
+        <li>
+            <td><a href="{{ path('terme_edit', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+        </li>
+    {% endfor %}
 </ul>
+
+
+{% endblock %}
+

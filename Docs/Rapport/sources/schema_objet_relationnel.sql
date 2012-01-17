@@ -28,11 +28,12 @@ CREATE TYPE concept_t AS OBJECT (
   ref_concept_general REF concept_t,
   synonymes nested_termes_t,
   concepts_associees nested_concepts_t
-)
+);
+
+CREATE TABLE concepts OF concept_t,
 NESTED TABLE synonymes STORE AS nested_termes,
 NESTED TABLE concepts_associees STORE AS nested_concepts;
 
-CREATE TABLE concepts OF concept_t;
 
 ALTER TABLE termes ADD CONSTRAINT pk_termes
 PRIMARY KEY (lib_terme)

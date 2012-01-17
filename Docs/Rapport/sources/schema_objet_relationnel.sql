@@ -1,5 +1,3 @@
-
-
 CREATE TYPE terme_t AS OBJECT (
   lib_terme VARCHAR2(32)
 );
@@ -40,4 +38,3 @@ PRIMARY KEY (lib_terme)
 
 ALTER TABLE concepts ADD CONSTRAINT pk_concepts
 PRIMARY KEY (ref_terme_vedette)
-

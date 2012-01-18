@@ -55,7 +55,8 @@ class ConceptController extends Controller
         $entity = $em->getRepository('ProjetBDDThesaurusBundle:Concept')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Concept entity.');
+	    $this->get('session')->setFlash('error', 'Concept introuvable.'); 
+            return $this->redirect($this->generateUrl('concept'));
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -101,6 +102,7 @@ class ConceptController extends Controller
             $em->persist($entity);
             $em->flush();
 
+	    $this->get('session')->setFlash('notice', 'Concept ajouté.'); 
             return $this->redirect($this->generateUrl('concept_show', array('id' => $entity->getId())));
             
         }
@@ -124,7 +126,8 @@ class ConceptController extends Controller
         $entity = $em->getRepository('ProjetBDDThesaurusBundle:Concept')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Concept entity.');
+	    $this->get('session')->setFlash('error', 'Concept introuvable.'); 
+            return $this->redirect($this->generateUrl('concept'));
         }
 
         $editForm = $this->createForm(new ConceptType(), $entity);
@@ -151,7 +154,8 @@ class ConceptController extends Controller
         $entity = $em->getRepository('ProjetBDDThesaurusBundle:Concept')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Concept entity.');
+	    $this->get('session')->setFlash('error', 'Concept introuvable.'); 
+            return $this->redirect($this->generateUrl('concept'));
         }
 
         $editForm   = $this->createForm(new ConceptType(), $entity);
@@ -203,11 +207,16 @@ class ConceptController extends Controller
             $entity = $em->getRepository('ProjetBDDThesaurusBundle:Concept')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Concept entity.');
+	       $this->get('session')->setFlash('error', 'Concept introuvable.'); 
             }
-
-            $em->remove($entity);
-            $em->flush();
+	    try{
+                $em->remove($entity);
+                $em->flush();
+                $this->get('session')->setFlash('notice', 'Concept supprimé.');
+	    }catch(\Exception $e){
+	       $this->get('session')->setFlash('error', 'Erreur lors de la suppression : ce concept possède des fils. ('.$e->getMessage().').'); 
+               return $this->redirect($this->generateUrl('concept_show', array('id' => $id)));
+	    }
         }
 
         return $this->redirect($this->generateUrl('concept'));

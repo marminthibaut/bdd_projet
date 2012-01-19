@@ -21,11 +21,7 @@ Voici le script ORACLE de création des types et tables pour notre application, 
 
 \subsection{Le paradigme relationnel pur}
 
-<<<<<<< HEAD
 La vision historique des bases de données est le relationnel pur. Il offre des performances reconnus. En revanche, son utilisation peut poser problème lorsque la modélisation de l'application est faite en objet. Il faut alors créer un schéma relationnel à partir de la modélisation objet (Diagramme UML de classes), et développer des procédures de stockage afin de gérer la persistance des objets.
-=======
-La vision historique des bases de données est le relationnel pur, il offre des performances reconnus. En revanche, son utilisation peut poser problème lors d'une modélisation objet de l'application. Il faut alors créer un nouveau schéma pour la base de données, et développer des procédures de stockage pour gérer la persistance des objets.
->>>>>>> 00718519d76b3c64e1a910e14dbfcc75babc0a84
 
 \subsubsection{Schéma relationnel}
 
@@ -44,15 +40,9 @@ Le schéma relationnel pur présenté ci-dessous permet la persistance des objet
     Un ORM ou \emph{mapping objet-relationnel} (en anglais \emph{object-relational mapping}) est une méthode de programmation qui consiste à donner l'illusion d'une base de données orientée objet à partir d'une base de données relationnelle en implémentant une interface entre celle-ci et le code de l'application.
    
 	\subsection{Pourquoi?}
-<<<<<<< HEAD
-    Nous avons vu que les systèmes de gestion de base de données orientées objet sont actuellement peu nombreux, que la norme SQL3 n'est que partiellement implémentée, notamment sur le SGBD Postgresql que nous avons décidé d'utiliser.
-    
-En revanche, cette méthode d'abstraction présente le désavantage de générer un schéma différents de la vision objet avec laquelle est modélisée l'application. Il peut parfois être nécessaire d'intervenir directement dans la base de données (développement de TRIGGERS, dump SQL, \ldots), ce qui nécessitera un effort supplémentaire d'analyse et de compréhension.
-=======
     Nous avons vu que les systèmes de gestion de bases de données orientées objet sont actuellement peu nombreux, que la norme SQL3 n'est que partiellement implémentée, notamment sur le SGBD Postgresql que nous avons décidé d'utiliser.
     
 En revanche, cette méthode d'abstraction présente l'inconvénient de générer un schéma différent de la vision objet avec laquelle est modélisée l'application. Il peut parfois être nécessaire d'intervenir directement sur la base de données (développement de TRIGGERS, dump SQL, \ldots), ce qui nécessite alors un effort d'analyse et de compréhension.
->>>>>>> 5ffe4152653918d226029998f36ea06f6775ae87
 
 \section{Décisions}
 

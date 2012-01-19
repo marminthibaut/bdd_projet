@@ -9,7 +9,7 @@
   \end{block}
   \begin{block}{Inconvenients}
     \begin{itemize}
-      \item peu de ODBMS
+      \item peu de SGBDO (O2, db4o, ObjectStore)
     \end{itemize}
   \end{block}
 \end{frame}
@@ -23,7 +23,7 @@
   \end{block}
   \begin{block}{Inconvenients}
     \begin{itemize}
-      \item peu implémenté par les DBMS
+      \item peu implémenté par les SGBD
       \item différences entre la norme et les implémentations
       \item manque de généricité
     \end{itemize}
@@ -59,15 +59,25 @@
 \begin{frame}{ORM}{Pourquoi ?}
   \begin{itemize}
     \item schéma de données unique
-    \item abstraction de la BD
+    \item abstraction du SGBD
     \item automatisation de la persistance des données
   \end{itemize}
 \end{frame}
 
 \subsection{Décision}
 \begin{frame}{Décision}
-  \begin{itemize}
-    \item PostgresQL
-    \item ORM
-  \end{itemize}
+  \begin{block}{PostgreSQL}
+    \begin{itemize}
+      \item découvrir un autre SGBD
+      \item travailler avec un logiciel libre
+      \item respect des standards SQL
+    \end{itemize}
+  \end{block}
+  \begin{block}{ORM}
+    \begin{itemize}
+      \item avantage d'un schéma objet
+      \item avantage d'une base de données relationnel
+      \item découverte d'un ORM
+    \end{itemize}
+  \end{block}
 \end{frame}

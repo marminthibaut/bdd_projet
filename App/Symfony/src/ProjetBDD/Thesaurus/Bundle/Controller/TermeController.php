@@ -32,29 +32,6 @@ class TermeController extends Controller
     }
 
     /**
-     * Finds and displays a Terme entity.
-     *
-     * @Route("/{id}/show", name="terme_show")
-     * @Template()
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entity = $em->getRepository('ProjetBDDThesaurusBundle:Terme')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Terme entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        );
-    }
-
-    /**
      * Displays a form to create a new Terme entity.
      *
      * @Route("/new", name="terme_new")
@@ -90,14 +67,11 @@ class TermeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('terme_show', array('id' => $entity->getId())));
+	    $this->get('session')->setFlash('notice', 'Terme ajouté.'); 
             
         }
 
-        return array(
-            'entity' => $entity,
-            'form'   => $form->createView()
-        );
+        return $this->redirect($this->generateUrl('terme_edit', array('id' => $entity->getId())));
     }
 
     /**
@@ -113,7 +87,8 @@ class TermeController extends Controller
         $entity = $em->getRepository('ProjetBDDThesaurusBundle:Terme')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Terme entity.');
+	    $this->get('session')->setFlash('error', 'Terme introuvable.'); 
+            return $this->redirect($this->generateUrl('terme'));
         }
 
         $editForm = $this->createForm(new TermeType(), $entity);
@@ -140,7 +115,8 @@ class TermeController extends Controller
         $entity = $em->getRepository('ProjetBDDThesaurusBundle:Terme')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Terme entity.');
+	    $this->get('session')->setFlash('error', 'Terme introuvable.'); 
+            return $this->redirect($this->generateUrl('terme'));
         }
 
         $editForm   = $this->createForm(new TermeType(), $entity);
@@ -151,10 +127,15 @@ class TermeController extends Controller
         $editForm->bindRequest($request);
 
         if ($editForm->isValid()) {
-            $em->persist($entity);
-            $em->flush();
+	    try{
+                $em->persist($entity);
+                $em->flush();
+                $this->get('session')->setFlash('notice', 'Terme modifié'); 
+	    }catch(\Exception $e){
+	        $this->get('session')->setFlash('error', 'Le terme ne peut être modifié car il est terme_vedette d\'un concept. ('.$e->getMessage().')'); 
+	    }
 
-            return $this->redirect($this->generateUrl('terme_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('terme_edit', array('id' => $entity)));
         }
 
         return array(
@@ -182,11 +163,18 @@ class TermeController extends Controller
             $entity = $em->getRepository('ProjetBDDThesaurusBundle:Terme')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Terme entity.');
+	        $this->get('session')->setFlash('error', 'Terme introuvable.'); 
+                return $this->redirect($this->generateUrl('terme'));
             }
 
-            $em->remove($entity);
-            $em->flush();
+	    try{
+                $em->remove($entity);
+                $em->flush();
+                $this->get('session')->setFlash('notice', 'Terme supprimé'); 
+            }catch(\Exception $e){
+                $this->get('session')->setFlash('error', 'Le terme ne peut être supprimé car il est terme vedette d\'un concept. ('.$e->getMessage().')'); 
+                return $this->redirect($this->generateUrl('terme_edit', array('id' => $id)));
+            }
         }
 
         return $this->redirect($this->generateUrl('terme'));

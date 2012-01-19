@@ -12,12 +12,12 @@
     </head>
     <body>
 {% if app.session.hasFlash('notice') %}
-    <div class="flash-notice">
+    <div class="flash flashnotice">
         {{ app.session.flash('notice') }}
     </div>
 {% endif %}
 {% if app.session.hasFlash('error') %}
-    <div class="flash-notice">
+    <div class="flash flasherror">
         {{ app.session.flash('error') }}
     </div>
 {% endif %}

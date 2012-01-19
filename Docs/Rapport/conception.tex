@@ -42,6 +42,8 @@ En revanche, cette méthode d'abstraction présente le désavantage de générer
 
 \section{Décisions}
 
+\subsection{Postgresql}
+
 Initialement, nous avions choisi de travailler avec Postpresql pour plusieurs raisons :
 \begin{itemize}
 \item découvrir l'objet relationnel sur un nouveau système (autre qu'ORACLE),
@@ -50,7 +52,11 @@ Initialement, nous avions choisi de travailler avec Postpresql pour plusieurs ra
 \item et précurseur aux débuts de l'objet-relationnel (premier SQL à intégrer des aspects objet).
 \end{itemize}
 
-Lors de notre analyse, nous avons fait le choix de développer l'application à l'aide d'un ORM. Nous justifions ce choix par les points suivants :
+\subsection{Framework \& ORM}
+
+Nous avons choisi de travailler à l'aide du framework Symfony (version 2), intégrant l'ORM Doctrine (version 2). Ces outils seront présentés dans la partie suivante.
+
+Les raisons qui nous ont poussé à faire le choix de développer l'application à l'aide d'un ORM sont les suivantes :
 \begin{itemize}
 \item nous avons pris conscience que l'application à développer ne nécessitait pas la vision objet-relationnel,
 \item nous tenions à travailler dans un environnement libre en utilisant Postgresql, mais aujourd'hui il ne fournit pas autant de fonctions orientées objet,
@@ -62,6 +68,8 @@ Lors de notre analyse, nous avons fait le choix de développer l'application à 
 \section{Templates et formulaires}
 
 \subsubsection{Accueil}
+
+La page d'accueil de l'application \emph{Thésaurus Rex} est composée d'un court texte de bienvenue. La partie gauche est composée du logo, d'un champs de recherche, et de deux liens d'accès aux parties de l'application : gestion des concepts et gestion des termes. Ce panel est visible sur toutes les vues.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_accueil}
@@ -70,6 +78,8 @@ Lors de notre analyse, nous avons fait le choix de développer l'application à 
 \end{figure}
 
 \subsubsection{Vue hiérarchique des concepts}
+
+La vue hiérarchique permet de visualiser l'ensemble des concepts sous la forme d'arbre en affichant le terme vedette de chaque concept. \emph{TG} signifie \emph{Terme Général},  il s'agit des racines de la hiérarchie (ils ne possèdent pas de concept général). \emph{TS} signifie \emph{Terme spécifique}, il s'agit des concepts possédant un terme général.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_concepts}
@@ -78,6 +88,16 @@ Lors de notre analyse, nous avons fait le choix de développer l'application à 
 \end{figure}
 
 \subsubsection{Visualisation d'un concept}
+
+Lors du clique sur un concept à partir de la vue hiérarchique, le concept est affiché avec son environnement sémantique direct :
+\begin{itemize}
+\item son concept générique,
+\item ses concepts spécifiques,
+\item ses concepts associés,
+\item ses termes synonymes.
+\end{itemize}
+
+Cette vue permet une navigation rapide dans la hiérarchie grâce à la multitude de liens.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_concept}
@@ -86,6 +106,8 @@ Lors de notre analyse, nous avons fait le choix de développer l'application à 
 \end{figure}
 
 \subsubsection{Ajout / Édition d'un concept}
+
+L'ajout et l'édition d'un concept se fait à l'aide des formulaires ci-après.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_concept_add}
@@ -100,6 +122,8 @@ Lors de notre analyse, nous avons fait le choix de développer l'application à 
 \end{figure}
 
 \subsubsection{Liste des termes}
+
+L'ensemble des termes peuvent être visualisés sous la forme d'une liste.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_termes}
@@ -108,14 +132,11 @@ Lors de notre analyse, nous avons fait le choix de développer l'application à 
 \end{figure}
 
 \subsubsection{Édition d'un terme}
+
+Lors du clique sur un terme dans la liste, le formulaire d'édition suivant apparaît.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_terme_edit}
 \end{center}
 \caption{Template du formulaire d'ajout d'un concept.}
 \end{figure}
-
-
-\section{Framework}
-
-Nous avons choisi de travailler à l'aide du framework Symfony (version 2), intégrant l'ORM Doctrin (version 2). Ces outils seront présentés dans la partie suivante.

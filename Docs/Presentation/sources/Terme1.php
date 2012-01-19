@@ -7,3 +7,4 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ProjetBDD\Thesaurus\Bundle\Entity\TermeRepository")
  */
 class Terme
+{

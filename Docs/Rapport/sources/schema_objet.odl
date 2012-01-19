@@ -1,0 +1,29 @@
+
+Class Terme;
+
+Class Concept
+( 
+  extent concepts
+  key vedette 
+)
+{
+  relationship Terme vedette;
+  relationship set<Terme> synonyme
+    inverse Terme::estSynonyme;
+  relationship Concept general;
+  relationship set<Concept> specifique;
+  relationship set<Concept> association;
+}
+
+
+Class Terme
+(
+  extent termes
+  key lib_terme
+)
+{
+  attribute String lib_terme;
+  relationship set<Concept> estVedette;
+  relationship set<Concept> estSynonyme
+    inverse::synonyme;
+}

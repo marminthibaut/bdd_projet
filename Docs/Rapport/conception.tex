@@ -39,9 +39,9 @@ Le schéma relationnel pur présenté ci-dessous permet la persistance des objet
     Un ORM ou \emph{mapping objet-relationnel} (en anglais \emph{object-relational mapping}) est un outil informatique qui donne l'illusion d'une base de données orientée objet à partir d'une base de données relationnelle en servant d'interface entre celle-ci et le code de l'application.
    
 	\subsection{Pourquoi?}
-    Nous avons vu que les systèmes de gestion de base de données orientées objet sont actuellement peu nombreuses, que la norme SQL3 n'est que partiellement implémentée, notamment sur le SGBD Postgresql que nous avons décidé d'utiliser.
+    Nous avons vu que les systèmes de gestion de base de données orientées objet sont actuellement peu nombreux, que la norme SQL3 n'est que partiellement implémentée, notamment sur le SGBD Postgresql que nous avons décidé d'utiliser.
     
-En revanche, cette méthode d'abstraction présente le désavantage de générer un schéma différents de la vision objet avec laquelle est modélisée l'application. Il peut parfois être nécessaire d'intervenir directement dans la base de données (développement de TRIGGERS, dump SQL, \ldots), ce qui nécessitera un effort supplémentaire de d'analyse et de compréhension.
+En revanche, cette méthode d'abstraction présente le désavantage de générer un schéma différents de la vision objet avec laquelle est modélisée l'application. Il peut parfois être nécessaire d'intervenir directement dans la base de données (développement de TRIGGERS, dump SQL, \ldots), ce qui nécessitera un effort supplémentaire d'analyse et de compréhension.
 
 \section{Décisions}
 
@@ -49,10 +49,10 @@ En revanche, cette méthode d'abstraction présente le désavantage de générer
 
 Initialement, nous avions choisi de travailler avec Postpresql pour plusieurs raisons :
 \begin{itemize}
-\item découvrir l'objet relationnel sur un nouveau système (autre qu'ORACLE),
+\item découvrir l'objet relationnel sur un nouveau SGBD (autre qu'ORACLE),
 \item travailler avec un logiciel libre,
 \item respectueux des standards SQL,
-\item et précurseur aux débuts de l'objet-relationnel (premier SQL à intégrer des aspects objet).
+\item et précurseur aux débuts de l'objet-relationnel (premier SGBD à intégrer des aspects objet).
 \end{itemize}
 
 \subsection{Framework \& ORM}
@@ -70,7 +70,7 @@ Les raisons qui nous ont poussé à faire le choix de développer l'application 
 	
 \section{Templates et formulaires}
 
-\subsubsection{Accueil}
+\subsection{Accueil}
 
 La page d'accueil de l'application \emph{Thésaurus Rex} est composée d'un court texte de bienvenue. La partie gauche est composée du logo, d'un champs de recherche, et de deux liens d'accès aux parties de l'application : gestion des concepts et gestion des termes. Ce panel est visible sur toutes les vues.
 \begin{figure}[H]
@@ -80,7 +80,7 @@ La page d'accueil de l'application \emph{Thésaurus Rex} est composée d'un cour
 \caption{Template de la page d'accueil de Thésaurus Rex.}
 \end{figure}
 
-\subsubsection{Vue hiérarchique des concepts}
+\subsection{Vue hiérarchique des concepts}
 
 La vue hiérarchique permet de visualiser l'ensemble des concepts sous la forme d'arbre en affichant le terme vedette de chaque concept. \emph{TG} signifie \emph{Terme Général},  il s'agit des racines de la hiérarchie (ils ne possèdent pas de concept général). \emph{TS} signifie \emph{Terme spécifique}, il s'agit des concepts possédant un terme général.
 \begin{figure}[H]
@@ -90,7 +90,7 @@ La vue hiérarchique permet de visualiser l'ensemble des concepts sous la forme 
 \caption{Template de la vue hiérarchique des concepts.}
 \end{figure}
 
-\subsubsection{Visualisation d'un concept}
+\subsection{Visualisation d'un concept}
 
 Lors du clique sur un concept à partir de la vue hiérarchique, le concept est affiché avec son environnement sémantique direct :
 \begin{itemize}
@@ -108,7 +108,7 @@ Cette vue permet une navigation rapide dans la hiérarchie grâce à la multitud
 \caption{Template d'affichage d'un concept.}
 \end{figure}
 
-\subsubsection{Ajout / Édition d'un concept}
+\subsection{Ajout / Édition d'un concept}
 
 L'ajout et l'édition d'un concept se fait à l'aide des formulaires ci-après.
 \begin{figure}[H]
@@ -124,7 +124,7 @@ L'ajout et l'édition d'un concept se fait à l'aide des formulaires ci-après.
 \caption{Template du formulaire d’édition d'un concept.}
 \end{figure}
 
-\subsubsection{Liste des termes}
+\subsection{Liste des termes}
 
 L'ensemble des termes peuvent être visualisés sous la forme d'une liste.
 \begin{figure}[H]
@@ -134,7 +134,7 @@ L'ensemble des termes peuvent être visualisés sous la forme d'une liste.
 \caption{Template de visualisation des termes.}
 \end{figure}
 
-\subsubsection{Édition d'un terme}
+\subsection{Édition d'un terme}
 
 Lors du clique sur un terme dans la liste, le formulaire d'édition suivant apparaît.
 \begin{figure}[H]

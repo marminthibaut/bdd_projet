@@ -18,11 +18,14 @@
   \begin{block}{Avantages}
     \begin{itemize}
       \item norme SQL3
+      \item accès direct par pointeurs
     \end{itemize}
   \end{block}
   \begin{block}{Inconvenients}
     \begin{itemize}
-      \item implémentation partielle de la norme
+      \item peu implémenté par les DBMS
+      \item différences entre la norme et les implémentations
+      \item manque de généricité
     \end{itemize}
   \end{block}
 \end{frame}
@@ -32,7 +35,7 @@
     \begin{itemize}
       \item mature
       \item performant
-      \item compatibilité
+      \item généricité
     \end{itemize}
   \end{block}
   \begin{block}{Inconvenients}
@@ -44,11 +47,27 @@
 
 \subsection{ORM}
 \begin{frame}{ORM}{Qu'est ce qu'un ORM ?}
+  \begin{block}{Object relational-mapping}
+    \begin{itemize}
+      \item composant logiciel
+      \item interface entre application objet et BD relationnel
+      \item illusion d'une BD objet
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 \begin{frame}{ORM}{Pourquoi ?}
+  \begin{itemize}
+    \item schéma de données unique
+    \item abstraction de la BD
+    \item automatisation de la persistance des données
+  \end{itemize}
 \end{frame}
 
 \subsection{Décision}
 \begin{frame}{Décision}
+  \begin{itemize}
+    \item PostgresQL
+    \item ORM
+  \end{itemize}
 \end{frame}

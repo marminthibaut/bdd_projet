@@ -1,30 +1,31 @@
-\textit{Objet ? Objet-relationnel ou relationnel pur ? C'est cette question qui est traitée en premier ici. Dans une seconde partie l'utilité des ORM est expliquée, puis les templates de l'application seront présentés.}
+\textit{Objet ? Objet-relationnel ou relationnel pur ? C'est dans cette phase de conception que nous allons répondre à cette question. Ensuite, une seconde partie décrira l'utilité des ORM, puis les templates de l'application seront présentés.}
 
 \section{Une histoire de paradigmes}
 \subsection{Le paradigme objet}
 
-Le modèle objet pour le stockage des données présente les mêmes avantages que pour la programmation orienté objet, à savoir une grande capacité d'abstraction, de factorisation et de maintenance. Malheureusement ce paradigme n'est que peu implémenté par les SGBD (O2, db4o, ObjectStore) ce qui nuit grandement à la portabilité d'une application basé sur ce paradigme.
+Le modèle objet pour le stockage des données présente les mêmes avantages que pour la programmation orienté objet, à savoir une grande capacité d'abstraction, de factorisation et de maintenance. Malheureusement ce modèle est implémenté par peu de SGBD (O2, db4o, ObjectStore) ce qui nuit grandement à la portabilité des applications basées sur celui-ci.
 
 \subsubsection{Schéma objet}
-\lstinputlisting{./sources/schema_objet.odl}
+\lstinputlisting[language=SQL,morekeywords={Class, extent, relationship, key, attribute, inverse}]{./sources/schema_objet.odl}
 
 \subsection{Le paradigme objet-relationnel}
 
-De nombreux SGBD tels que ORACLE offrent un paradigme hybride entre l'objet et le relationnel, l'objet-relationnel.
-Ce paradigme est standardisé par la norme SQL3 cependant celle-ci n'est jamais implémentée dans sa globalité ce qui pose à nouveau un problème de portabilité (un script SQL pour ORACLE ne s'exécutera pas sur PostgreSQL et vice-versa).
+De nombreux SGBD tels que ORACLE offrent une vision hybride entre l'objet et le relationnel : l'objet-relationnel.
+
+Ce modèle est standardisé par la norme SQL3. Cependant il n'est jamais implémenté dans sa globalité ce qui pose à nouveau un problème de portabilité : un script SQL pour ORACLE ne s'exécutera pas sur PostgreSQL.
 
 \subsubsection{Schéma objet-relationnel}
 
-Voici le script ORACLE de création des types et tables pour notre application, utilisant des aspect objet-relationnel.
+Voici le script ORACLE de création des types et tables pour notre application, utilisant des aspects objet-relationnel.
 \lstinputlisting[language=sql]{./sources/schema_objet_relationnel.sql}
 
 \subsection{Le paradigme relationnel pur}
 
-La vision historique des bases de données est le relationnel pur, il offre des performances reconnus. En revanche, son utilisation peut poser problème lors d'une modélisation objet de l'application. If faut alors créer un nouveau schéma pour la base de données, et développer des procédures de stockage pour gérer la persistance des objets.
+La vision historique des bases de données est le relationnel pur. Il offre des performances reconnus. En revanche, son utilisation peut poser problème lorsque la modélisation de l'application est faite en objet. Il faut alors créer un schéma relationnel à partir de la modélisation objet (Diagramme UML de classes), et développer des procédures de stockage afin de gérer la persistance des objets.
 
 \subsubsection{Schéma relationnel}
 
-Le schéma relationnel pur présenté ci-dessous permet la persistance des objets nécessaire à notre application. D'après le diagramme UML de classe, nous avons ajouté une table des synonymes et une table d'associations.
+Le schéma relationnel pur présenté ci-dessous permet la persistance des objets nécessaires à notre application. D'après le diagramme UML de classes, nous avons ajouté une table des synonymes et une table d'associations.
 
 \begin{description}
 \item[TERME](\underline{lib\_terme})
@@ -36,32 +37,32 @@ Le schéma relationnel pur présenté ci-dessous permet la persistance des objet
 \section{ORM}
 
 	\subsection{Qu'est qu'un ORM?}
-    Un ORM ou \emph{mapping objet-relationnel} (en anglais \emph{object-relational mapping}) est un outil informatique qui donne l'illusion d'une base de données orientée objet à partir d'une base de données relationnelle en servant d'interface entre celle-ci et le code de l'application.
+    Un ORM ou \emph{mapping objet-relationnel} (en anglais \emph{object-relational mapping}) est une méthode de programmation qui consiste à donner l'illusion d'une base de données orientée objet à partir d'une base de données relationnelle en implémentant une interface entre celle-ci et le code de l'application.
    
 	\subsection{Pourquoi?}
-    Nous avons vu que les systèmes de gestion de base de données orientées objet sont actuellement peu nombreuses, que la norme SQL3 n'est que partiellement implémentée, notamment sur le SGBD Postgresql que nous avons décidé d'utiliser.
+    Nous avons vu que les systèmes de gestion de bases de données orientées objet sont actuellement peu nombreux, que la norme SQL3 n'est que partiellement implémentée, notamment sur le SGBD Postgresql que nous avons décidé d'utiliser.
     
-En revanche, cette méthode d'abstraction présente le désavantage de générer un schéma différents de la vision objet avec laquelle est modélisée l'application. Il peut parfois être nécessaire d'intervenir directement dans la base de données (développement de TRIGGERS, dump SQL, \ldots), ce qui nécessitera un effort supplémentaire de d'analyse et de compréhension.
+En revanche, cette méthode d'abstraction présente l'inconvénient de générer un schéma différent de la vision objet avec laquelle est modélisée l'application. Il peut parfois être nécessaire d'intervenir directement sur la base de données (développement de TRIGGERS, dump SQL, \ldots), ce qui nécessite alors un effort d'analyse et de compréhension.
 
 \section{Décisions}
 
 \subsection{Postgresql}
 
-Initialement, nous avions choisi de travailler avec Postpresql pour plusieurs raisons :
+Dès le lancement du projet, nous avons choisi de travailler avec Postpresql pour plusieurs raisons :
 \begin{itemize}
-\item découvrir l'objet relationnel sur un nouveau système (autre qu'ORACLE),
+\item découvrir l'objet-relationnel sur un nouveau système (autre qu'ORACLE, vu en TD/TP),
 \item travailler avec un logiciel libre,
 \item respectueux des standards SQL,
-\item et précurseur aux débuts de l'objet-relationnel (premier SQL à intégrer des aspects objet).
+\item et précurseur aux débuts de l'objet-relationnel (premier SGBD à intégrer des aspects objet).
 \end{itemize}
 
 \subsection{Framework \& ORM}
 
-Nous avons choisi de travailler à l'aide du framework Symfony (version 2), intégrant l'ORM Doctrine (version 2). Ces outils seront présentés dans la partie suivante.
+Après discussion, nous avons choisi de travailler à l'aide du framework Symfony (version 2), intégrant l'ORM Doctrine (version 2). Ces outils seront présentés dans la partie suivante.
 
 Les raisons qui nous ont poussé à faire le choix de développer l'application à l'aide d'un ORM sont les suivantes :
 \begin{itemize}
-\item nous avons pris conscience que l'application à développer ne nécessitait pas la vision objet-relationnel,
+\item nous avons pris conscience que l'application à développer ne nécessitait pas d'aspects objet (objet-relationnel),
 \item nous tenions à travailler dans un environnement libre en utilisant Postgresql, mais aujourd'hui il ne fournit pas autant de fonctions orientées objet que ORACLE,
 \item nous souhaitions travailler avec des technologies matures,
 \item nous souhaitions découvrir la mise en place d'une application à l'aide d'un ORM.
@@ -70,7 +71,7 @@ Les raisons qui nous ont poussé à faire le choix de développer l'application 
 	
 \section{Templates et formulaires}
 
-\subsubsection{Accueil}
+\subsection{Accueil}
 
 La page d'accueil de l'application \emph{Thésaurus Rex} est composée d'un court texte de bienvenue. La partie gauche est composée du logo, d'un champs de recherche, et de deux liens d'accès aux parties de l'application : gestion des concepts et gestion des termes. Ce panel est visible sur toutes les vues.
 \begin{figure}[H]
@@ -80,9 +81,11 @@ La page d'accueil de l'application \emph{Thésaurus Rex} est composée d'un cour
 \caption{Template de la page d'accueil de Thésaurus Rex.}
 \end{figure}
 
-\subsubsection{Vue hiérarchique des concepts}
+\subsection{Vue hiérarchique des concepts}
 
 La vue hiérarchique permet de visualiser l'ensemble des concepts sous la forme d'arbre en affichant le terme vedette de chaque concept. \emph{TG} signifie \emph{Terme Général},  il s'agit des racines de la hiérarchie (ils ne possèdent pas de concept général). \emph{TS} signifie \emph{Terme spécifique}, il s'agit des concepts possédant un terme général.
+
+Notons que nous avons utilisé \emph{Termes Général} et \emph{Termes Spécifique} au lieu du mot \emph{Concept}. En effet, bien que ces deux notions sont différentes, dans le cas de la vue hiérarchique, il est envisageable des les confondre.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_concepts}
@@ -90,7 +93,7 @@ La vue hiérarchique permet de visualiser l'ensemble des concepts sous la forme 
 \caption{Template de la vue hiérarchique des concepts.}
 \end{figure}
 
-\subsubsection{Visualisation d'un concept}
+\subsection{Visualisation d'un concept}
 
 Lors du clique sur un concept à partir de la vue hiérarchique, le concept est affiché avec son environnement sémantique direct :
 \begin{itemize}
@@ -105,10 +108,10 @@ Cette vue permet une navigation rapide dans la hiérarchie grâce à la multitud
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_concept}
 \end{center}
-\caption{Template d'affichage d'un concept.}
+\caption{Template d'affichage d'un concept et de son environnement sémantique direct.}
 \end{figure}
 
-\subsubsection{Ajout / Édition d'un concept}
+\subsection{Ajout / Édition d'un concept}
 
 L'ajout et l'édition d'un concept se fait à l'aide des formulaires ci-après.
 \begin{figure}[H]
@@ -124,9 +127,9 @@ L'ajout et l'édition d'un concept se fait à l'aide des formulaires ci-après.
 \caption{Template du formulaire d’édition d'un concept.}
 \end{figure}
 
-\subsubsection{Liste des termes}
+\subsection{Liste des termes}
 
-L'ensemble des termes peuvent être visualisés sous la forme d'une liste.
+La seconde partie de l'application permet l'accès à la gestion des Termes. L'ensemble des termes peut être visualisé sous la forme d'une liste.
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{files/template_termes}
@@ -134,7 +137,7 @@ L'ensemble des termes peuvent être visualisés sous la forme d'une liste.
 \caption{Template de visualisation des termes.}
 \end{figure}
 
-\subsubsection{Édition d'un terme}
+\subsection{Édition d'un terme}
 
 Lors du clique sur un terme dans la liste, le formulaire d'édition suivant apparaît.
 \begin{figure}[H]

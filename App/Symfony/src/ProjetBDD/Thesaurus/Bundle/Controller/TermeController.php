@@ -135,7 +135,7 @@ class TermeController extends Controller
 	        $this->get('session')->setFlash('error', 'Le terme ne peut être modifié car il est terme_vedette d\'un concept. ('.$e->getMessage().')'); 
 	    }
 
-            return $this->redirect($this->generateUrl('terme_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('terme_edit', array('id' => $entity)));
         }
 
         return array(

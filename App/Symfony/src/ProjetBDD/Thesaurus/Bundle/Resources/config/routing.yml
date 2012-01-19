@@ -41,10 +41,6 @@ terme:
     pattern:  /termes
     defaults: { _controller: ProjetBDDThesaurusBundle:Terme:index }
  
-terme_show:
-    pattern:  /terme/show/{id}
-    defaults: { _controller: ProjetBDDThesaurusBundle:Terme:show }
- 
 terme_edit:
     pattern:  /terme/edit/{id}
     defaults: { _controller: ProjetBDDThesaurusBundle:Terme:edit }

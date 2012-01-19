@@ -2,6 +2,8 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{hyperref}
 \usepackage[footheight=1em]{beamerthemeboxes}
+\usepackage{listings}
+\usepackage{color}
 %\usepackage{pgfpages}
 %\setbeameroption{show notes on second screen=left}
 \usetheme{Singapore}
@@ -24,6 +26,23 @@
 \date{20 Janvier 2012}
 
 \begin{document}
+
+% Def variable coloration code source
+\definecolor{keyword}{rgb}{0.55,0,0} 
+\definecolor{type}{rgb}{0,0.55,0} 
+\definecolor{comment}{rgb}{0.7,0.7,0.7} 
+
+\lstset{
+basicstyle=\footnotesize\sffamily,
+numbers=none,
+numberstyle=\footnotesize\color{comment},
+keywordstyle=\color{keyword}\bfseries,
+commentstyle=\color{comment},
+breaklines=true,
+fontadjust=true,
+columns=fullflexible,
+morekeywords=true
+}
 
 \AtBeginSection[]
 {

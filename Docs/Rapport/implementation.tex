@@ -1,6 +1,4 @@
-Classes réellement implémentées dans symfony2 + schema relationnel créé par doctrine.
-
-Aperçus d'écran finaux
+\textit{Cette dernière partie présente Symfony2, le framework utilisé pour le développement de cette application. Elle détaille également la structure et les entités créées, ainsi que le schéma relationnel généré par l'ORM Doctrine2, intégré dans le framework. Enfin, les vue finales sont présentées.}
 
 \section{Le framework Symfony2}
 \subsection{Présentation du framework}
@@ -12,7 +10,7 @@ Le projet, créé en 1998, a atteint aujourd'hui une grande maturité. Pour preu
 
 Pour ce projet, nous avons utilisé la deuxième version de Symfony (Symfony2).
 
-\subsection{Structure des applications}
+\subsection{Structure}
 
 \subsubsection{Bundle}
 Il s'agit d'un module ou d'un plugin :
@@ -33,7 +31,7 @@ Une entité (Entity) est une classe présente dans un Bundle. Elle peut être en
 
 Doctrine2 est un des ORM le plus utilisé à ce jour. Il est sous licence libre GNU LGPL. C'est l'ORM par défaut de Symfony depuis la version 1.3. Parfaitement intégré au framework, les entités créées dans les Bundles Symfony peuvent contenir des tags qui permettent de dialoguer avec Doctrine et de définir la clé primaire, les relations, les types de champs, etc\ldots
 
-\section{Structure de l'application}
+\section{Structure de \emph{Thésaurus Rex}}
 
 Pour le développement de cette application, nous avons créé un Bundle nommé \emph{ProjetBDDThesaurusBundle}, contenant lui même les deux entités déclarées dans notre diagramme de classe final : \emph{Terme} et \emph{Concept}.
 
@@ -150,6 +148,8 @@ Ce déclencheur assure l'intégrité des relations à tout moment.
 \lstinputlisting[language=sql,morekeywords={REPLACE,FUNCTION,RETURNS,IF,ELSEIF,RETURN,LANGUAGE,DECLARE,BEGIN,FOR,EACH,ROW,PROCEDURE}]{./sources/trigger.sql}
 
 \section{Templates finaux}
+
+Les templates sont réalisés en HTML5 / CSS3. Nous avons tenu à rester fidèle aux vue réalisées lors de la conception.
 
 \subsubsection{Accueil}
 \begin{figure}[H]
